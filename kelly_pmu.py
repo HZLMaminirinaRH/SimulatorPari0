@@ -1,7 +1,7 @@
 import os
 
 def calculer_kelly(cote, proba):
-    """Calcule la mise optimale selon le critère de Kelly."""
+    
     b = cote - 1
     p = proba / 100
     q = 1 - p
@@ -10,7 +10,7 @@ def calculer_kelly(cote, proba):
     return max(0, f_star)
 
 def logger_resultat(cote, proba, mise_reelle, capital):
-    """Enregistre l'analyse dans le dossier Downloads de votre Android."""
+    
     log_path = os.path.expanduser("~/storage/downloads/log_session_ia.txt")
     entree = f"\n[KELLY] Cote: {cote} | Proba: {proba}% | Mise suggérée: {mise_reelle:.2f} (Cap: {capital})"
     try:
@@ -30,7 +30,7 @@ def main():
         f_star = calculer_kelly(cote, proba)
 
         if f_star > 0:
-            # On applique la stratégie 'Fractional Kelly' (50%) pour plus de sécurité
+            
             mise_suggeree = (f_star * 0.5) * capital
             print(f"\n💡 AVANTAGE DÉTECTÉ !")
             print(f"Mise suggérée (50% Kelly) : {mise_suggeree:.2f}")
